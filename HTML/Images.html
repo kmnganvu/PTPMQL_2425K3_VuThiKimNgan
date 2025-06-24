@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+  width: 100%;
+}
+p {
+  background-image: url('IMG/img_chania.jpg');
+  background-repeat: no-repeat;
+}
+
+</style>
+</head>
+<body>
+
+<h2>Alternative text - Vu Thi Kim Ngan - 2221050402</h2>
+
+<p>The alt attribute should reflect the image content, so users who cannot see the image get an understanding of what the image contains:</p>
+
+<img src="IMG/img_chania.jpg" alt="Flowers in Chania" width="460" height="345">
+
+<!--Thuộc tính bắt buộc altcung cấp văn bản thay thế cho hình ảnh nếu vì lý do nào đó người dùng không thể xem được hình ảnh 
+(do kết nối chậm, lỗi trong thuộc tính src hoặc nếu người dùng sử dụng trình đọc màn hình).
+
+Giá trị của altthuộc tính phải mô tả hình ảnh.Nếu trình duyệt không tìm thấy hình ảnh, nó sẽ hiển thị giá trị của alt thuộc tính-->
+<img src="IMG/wrongname.gif" alt="Flowers in Chania">
+<!--Kích thước hình ảnh - Chiều rộng và Chiều cao
+Bạn có thể sử dụng stylethuộc tính này để chỉ định chiều rộng và chiều cao của hình ảnh.-->
+<img src="IMG/ngan.jpg" alt="Girl in a jacket" style="width:500px;height:600px;">
+
+<!--Ngoài ra, bạn có thể sử dụng các thuộc tính width và height-->
+<img src="IMG/ngan.jpg" alt="Girl in a jacket" width="500" height="600">
+
+<!--Hình ảnh động
+HTML cho phép sử dụng ảnh GIF động-->
+<h2>Animated Images - Vu Thi Kim Ngan - 2221050402</h2>
+
+<p>HTML allows moving images:</p>
+
+<img src="IMG/programming.gif" alt="Computer man" style="width:48px;height:48px;">
+
+<!--Hình ảnh như một liên kết
+Để sử dụng hình ảnh làm liên kết, hãy đặt <img>thẻ bên trong <a> thẻ-->
+<h2>Image as a Link</h2>
+
+<p>The image is a link. You can click on it.</p>
+
+<a href="default.asp">
+<img src="IMG/smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;">
+</a>    
+
+<!--Hình ảnh nổi: float -->
+<p><img src="IMG/smiley.gif" alt="Smiley face" style="float:right;width:42px;height:42px;">
+The image will float to the right of the text.</p>
+
+<p><img src="IMG/smiley.gif" alt="Smiley face" style="float:left;width:42px;height:42px;">
+The image will float to the left of the text.</p>
+
+<!--Image Maps: Bản đồ hình ảnh
+Thẻ HTML <map>định nghĩa một bản đồ hình ảnh. Bản đồ hình ảnh là một hình ảnh có các vùng có thể nhấp được. 
+Các vùng được định nghĩa bằng một hoặc nhiều <area>thẻ
+Hình ảnh được chèn bằng <img>thẻ. Điểm khác biệt duy nhất so với các hình ảnh khác là bạn phải thêm usemap thuộc tính, 
+Giá usemaptrị bắt đầu bằng thẻ bắt đầu bằng dấu thăng #theo sau là tên của bản đồ hình ảnh và được sử dụng để tạo mối quan hệ giữa hình ảnh và bản đồ hình ảnh. 
+Tạo bản đồ hình ảnh
+Sau đó, thêm một <map>phần tử.
+
+Phần tử này <map>được sử dụng để tạo bản đồ hình ảnh và được liên kết với hình ảnh bằng cách sử dụng name thuộc tính bắt buộc
+Thuộc nametính phải có cùng giá trị với thuộc tính <img>'s usemap.
+
+Các khu vực
+Sau đó, thêm các vùng có thể nhấp vào.
+
+Khu vực có thể nhấp được xác định bằng một <area>phần tử.
+
+Hình dạng
+Bạn phải xác định hình dạng của vùng có thể nhấp và có thể chọn một trong các giá trị sau:
+
+rect- xác định một vùng hình chữ nhật
+circle- xác định một vùng tròn
+poly- xác định một vùng đa giác
+default- xác định toàn bộ khu vực
+Bạn cũng phải xác định một số tọa độ để có thể đặt vùng có thể nhấp vào vào hình ảnh. 
+
+Hình dạng="hình chữ nhật"
+Các tọa độ được shape="rect"sắp xếp theo cặp, một cho trục x và một cho trục y.
+
+-->
+<h2>Image Maps</h2>
+<p>Click on the computer, the phone, or the cup of coffee to go to a new page and read more about the topic:</p>
+
+<img src="IMG/workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
+
+<map name="workmap">
+  <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
+  <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
+  <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm">
+</map>
+
+<!-- Nền Hình ảnh-->
+<h2>Background Image</h2>
+
+<p>A background image for a p element:</p>
+
+<p style="background-image: url('IMG/img_chania.jpg');">
+You can specify background images<br>
+for any visible HTML element.<br>
+In this example, the background image<br>
+is specified for a p element.<br>
+By default, the background-image<br>
+will repeat itself in the direction(s)<br>
+where it is smaller than the element<br>
+where it is specified. Try resizing the<br>
+browser window to see how the<br>
+background image behaves.
+</p>
+
+<!--Phần tử HTML <picture>
+Phần tử HTML <picture>cung cấp cho các nhà phát triển web sự linh hoạt hơn trong việc chỉ định nguồn hình ảnh.
+
+Phần <picture>tử chứa một hoặc nhiều <source>phần tử, mỗi phần tử tham chiếu đến các hình ảnh khác nhau thông qua srcset thuộc tính. Theo cách này, trình duyệt có thể chọn hình ảnh phù hợp nhất với chế độ xem và/hoặc thiết bị hiện tại.
+
+Mỗi <source>phần tử có một mediathuộc tính xác định thời điểm hình ảnh phù hợp nhất.
+1. Băng thông
+Nếu bạn có màn hình hoặc thiết bị nhỏ, không cần phải tải tệp hình ảnh lớn. Trình duyệt sẽ sử dụng <source> phần tử đầu tiên có giá trị thuộc tính khớp và bỏ qua bất kỳ phần tử nào sau đây.
+
+2. Hỗ trợ định dạng
+Một số trình duyệt hoặc thiết bị có thể không hỗ trợ tất cả các định dạng hình ảnh. Bằng cách sử dụng <picture>phần tử, bạn có thể thêm hình ảnh ở mọi định dạng và trình duyệt sẽ sử dụng định dạng đầu tiên mà nó nhận dạng được và bỏ qua bất kỳ phần tử nào sau đây.-->
+<h2>The picture Element</h2>
+
+<picture>
+  <source media="(min-width: 650px)" srcset="img_food.jpg">
+  <source media="(min-width: 465px)" srcset="img_car.jpg">
+  <img src="IMG/img_chania.jpg" style="width:auto;">
+</picture>
+
+<p>Resize the browser to see different versions of the picture loading at different viewport sizes.
+The browser looks for the first source element where the media query matches the user's current viewport width,
+and fetches the image specified in the srcset attribute.</p>
+
+<p>The img element is required as the last child tag of the picture declaration block.
+The img element is used to provide backward compatibility for browsers that do not support the picture element, or if none of the source tags matched.
+</p>
+
+</body>
+</html>

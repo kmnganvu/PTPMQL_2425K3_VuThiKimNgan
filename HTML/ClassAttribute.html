@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.city {
+  background-color: tomato;
+  color: white;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<h1>Vu Thi Kim Ngan - 2221050402</h1>
+<div class="city">
+<h2>London</h2>
+<p>London is the capital of England.</p>
+</div> 
+
+<div class="city">
+<h2>Paris</h2>
+<p>Paris is the capital of France.</p>
+</div>
+
+<div class="city">
+<h2>Tokyo</h2>
+<p>Tokyo is the capital of Japan.</p>
+</div>
+<!--Các phần tử HTML có thể thuộc về nhiều lớp.
+
+Để xác định nhiều lớp, hãy phân tách tên lớp bằng một khoảng trắng, 
+ví dụ <div class="city main">. Phần tử sẽ được định kiểu theo tất cả các lớp đã chỉ định.-->
+<div>
+    <h2 class="city main">London</h2>
+    <h2 class="city">Paris</h2>
+    <h2 class="city">Tokyo</h2>
+</div>
+<h2>Use of The class Attribute in JavaScript</h2>
+<p>Click the button to hide all elements with class name "city":</p>
+
+<button onclick="myFunction()">Hide elements</button>
+
+<h2 class="city">London</h2>
+<p>London is the capital of England.</p>
+
+<h2 class="city">Paris</h2>
+<p>Paris is the capital of France.</p>
+
+<h2 class="city">Tokyo</h2>
+<p>Tokyo is the capital of Japan.</p>
+
+<script>
+function myFunction() {
+  var x = document.getElementsByClassName("city");
+  for (var i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

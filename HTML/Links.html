@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!--HTML Links - Different Colors: Ở đây, một liên kết chưa được truy cập sẽ có màu xanh lá cây và không có gạch chân. 
+Một liên kết đã truy cập sẽ có màu hồng và không có gạch chân. Một liên kết đang hoạt động sẽ có màu vàng 
+và được gạch chân. Ngoài ra, khi di chuột qua một liên kết (a:hover), nó sẽ chuyển sang màu đỏ và được gạch chân-->
+<style>
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+  padding: 15px 25px;
+  text-align: center;
+  display: inline-block;
+}
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:hover, a:active {
+  background-color: red;
+}
+</style>
+</head>
+<body>
+
+<h1>HTML Links - Vu Thi Kim Ngan - 2221050402</h1>
+<!--Liên kết HTML là siêu liên kết.
+
+Bạn có thể nhấp vào liên kết và chuyển đến tài liệu khác.
+
+Khi bạn di chuyển chuột qua một liên kết, mũi tên chuột sẽ biến thành hình bàn tay nhỏ.-->
+<p><a href="https://www.w3schools.com/">Visit W3Schools.com!</a></p>
+
+<!--Thuộc tính này targetchỉ định nơi mở tài liệu được liên kết.
+
+Thuộc targettính có thể có một trong các giá trị sau:
+
+_self- Mặc định. Mở tài liệu trong cùng cửa sổ/tab khi nó được nhấp vào
+_blank- Mở tài liệu trong một cửa sổ hoặc tab mới
+_parent- Mở tài liệu trong khung cha
+_top- Mở tài liệu trong toàn bộ cửa sổ-->
+<h2>The target Attribute - Vu Thi Kim Ngan - 2221050402</h2>
+
+<a href="https://www.w3schools.com/" target="_blank">Visit W3Schools!</a> 
+
+<p>If target="_blank", the link will open in a new browser window or tab.</p>
+<!--Liên kết cục bộ (liên kết đến một trang trong cùng một trang web) được chỉ định bằng URL tương đối (không có phần "https://www")-->
+<h2>Absolute URLs - Vu Thi Kim Ngan - 2221050402</h2>
+<p><a href="https://www.w3.org/" target="_blank">W3C</a></p>
+<p><a href="https://www.google.com/" target="_blank">Google</a></p>
+
+<h2>Relative URLs - Vu Thi Kim Ngan - 2221050402</h2>
+<p><a href="IMG/ngan.jpg">HTML Images</a></p>
+<p><a href="/css/default.asp">CSS Tutorial</a></p>
+
+<!--Liên kết HTML - Sử dụng hình ảnh làm liên kết
+Để sử dụng hình ảnh làm liên kết, chỉ cần đặt <img> thẻ bên trong <a>thẻ-->
+<h2>Image as a Link - Vu Thi Kim Ngan - 2221050402</h2>
+
+<p>The image below is a link. Try to click on it.</p>
+
+<a href="default.asp"><img src="IMG/ngan.jpg" alt="HTML tutorial" style="width:42px;height:42px;"></a>
+
+<!--Liên kết đến một địa chỉ email
+Sử dụng mailto:bên trong hrefthuộc tính để tạo liên kết mở chương trình email của người dùng (cho phép họ gửi email mới)-->
+<a href="mailto:someone@example.com">Send email</a>
+
+<!--Nút như một liên kết
+Để sử dụng nút HTML làm liên kết, bạn phải thêm một số mã JavaScript.-->
+<h2>Button as a Links - Vu Thi Kim Ngan - 2221050402</h2>
+
+<p>Click the button to go to the HTML tutorial.</p>
+
+<button onclick="document.location='default.asp'">HTML Tutorial</button>
+
+<!--Tiêu đề liên kết
+Thuộc tính này titlechỉ định thông tin bổ sung về một phần tử. Thông tin thường được hiển thị dưới dạng văn bản chú giải công cụ khi chuột di chuyển qua phần tử. -->
+<h2>Link Titles - Vu Thi Kim Ngan - 2221050402</h2>
+<p>The title attribute specifies extra information about an element. The information is most often shown as a tooltip text when the mouse moves over the element.</p>
+<a href="https://www.w3schools.com/html/" title="Go to W3Schools HTML section">Visit our HTML Tutorial</a>
+
+<!--Thêm thông tin về URL tuyệt đối và URL tương đối-->
+<!--Sử dụng URL đầy đủ để liên kết đến một trang web-->
+<a href="https://www.w3schools.com/html/default.asp">HTML tutorial</a>
+<!--Liên kết đến một trang nằm trong thư mục html trên trang web hiện tại-->
+<a href="/html/default.asp">HTML tutorial</a>
+<!--Liên kết đến một trang nằm trong cùng thư mục với trang hiện tại-->
+<a href="default.asp">HTML tutorial</a>
+
+<!--Liên kết HTML - Tạo dấu trang
+Tạo một Bookmark trong HTML
+Dấu trang có thể hữu ích nếu trang web rất dài.
+
+Để tạo dấu trang - trước tiên hãy tạo dấu trang, sau đó thêm liên kết vào dấu trang đó.
+
+Khi nhấp vào liên kết, trang sẽ cuộn xuống hoặc cuộn lên đến vị trí có dấu trang.Đầu tiên, sử dụng idthuộc tính để tạo dấu trang: -->
+<p><a href="#C4">Jump to Chapter 4</a></p>
+<p><a href="#C10">Jump to Chapter 10</a></p>
+
+<h2>Chapter 1</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 2</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 3</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2 id="C4">Chapter 4</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 5</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 6</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 7</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 8</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 9</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2 id="C10">Chapter 10</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 11</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 12</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 13</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 14</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 15</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 16</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 17</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 18</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 19</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 20</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 21</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 22</h2>
+<p>This chapter explains ba bla bla</p>
+
+<h2>Chapter 23</h2>
+<p>This chapter explains ba bla bla</p>
+
+</body>
+</html>
