@@ -1,0 +1,119 @@
+<!--Semantic Elements: Một phần tử ngữ nghĩa mô tả rõ ràng ý nghĩa của nó đối với cả trình duyệt và nhà phát triển.
+
+Ví dụ về các thành phần phi ngữ nghĩa : <div>and <span>- Không nói lên điều gì về nội dung của nó.
+
+Ví dụ về các thành phần ngữ nghĩa : <img>, <table>, và <article>- Xác định rõ ràng nội dung của nó.
+Nhiều trang web chứa mã HTML như: <div id="nav"> <div class="header"> <div id="footer"> để chỉ định điều hướng, đầu trang và chân trang.
+
+Trong HTML có một số thành phần ngữ nghĩa có thể được sử dụng để xác định các phần khác nhau của trang web
+<article>
+<aside>
+<details>
+<figcaption>
+<figure>
+<footer>
+<header>
+<main>
+<mark>
+<nav>
+<section>
+<summary>
+<time>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .all-browsers {
+        margin: 0;
+        padding: 5px;
+        background-color: lightgray;
+        }
+
+        .all-browsers > h1, .browser {
+        margin: 10px;
+        padding: 5px;
+        }
+
+        .browser {
+        background: white;
+        }
+
+        .browser > h2, p {
+        margin: 4px;
+        font-size: 90%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vu Thi Kim Ngan - 2221050402</h1>
+    <nav><!--Phần tử này <nav>xác định một tập hợp các liên kết điều hướng.-->
+        <a href="/html/">HTML</a> |
+        <a href="/css/">CSS</a> |
+        <a href="/js/">JavaScript</a> |
+        <a href="/jquery/">jQuery</a>
+    </nav>
+
+<!--Phần tử này <section>xác định một phần trong tài liệu-->
+    <section>
+        <h1>WWF</h1>
+        <p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.</p>
+    </section>
+
+    <section>
+        <h1>WWF's Panda symbol</h1>
+        <p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
+    </section>
+    <!--Phần tử này <article>chỉ định nội dung độc lập, khép kín.
+
+    Một bài viết phải có ý nghĩa riêng và có thể phân phối độc lập với phần còn lại của trang web.
+
+    Ví dụ về nơi <article>có thể sử dụng phần tử:
+
+    Bài viết diễn đàn
+    Bài đăng trên blog
+    Bình luận của người dùng
+    Thẻ sản phẩm
+    Bài báo-->
+
+    <!--Phần tử này <header>đại diện cho một vùng chứa nội dung giới thiệu hoặc một tập hợp các liên kết điều hướng.
+
+    Một <header>phần tử thường chứa:
+
+    một hoặc nhiều phần tử tiêu đề (<h1> - <h6>)
+    logo hoặc biểu tượng
+    thông tin tác giả-->
+    <article class="all-browsers">
+        <header>
+        <h1>Most Popular Browsers - Vu Thi Kim Ngan - 2221050402</h1>
+        </header>
+        <article class="browser">
+            <h2>Google Chrome</h2>
+            <p>Google Chrome is a web browser developed by Google, released in 2008. Chrome is the world's most popular web browser today!</p>
+        </article>
+        <article class="browser">
+            <h2>Mozilla Firefox</h2>
+            <p>Mozilla Firefox is an open-source web browser developed by Mozilla. Firefox has been the second most popular web browser since January, 2018.</p>
+        </article>
+        <article class="browser">
+            <h2>Microsoft Edge</h2>
+            <p>Microsoft Edge is a web browser developed by Microsoft, released in 2015. Microsoft Edge replaced Internet Explorer.</p>
+        </article>
+    </article>
+</body>
+<!--Phần tử này <footer>xác định chân trang cho một tài liệu hoặc phần.
+
+Một <footer>phần tử thường chứa:
+
+thông tin tác giả
+thông tin bản quyền
+thông tin liên lạc
+sơ đồ trang web
+quay lại liên kết đầu trang
+tài liệu liên quan
+Bạn có thể có nhiều <footer>phần tử trong một tài liệu.-->
+<footer>
+    <p>Author: Hege Refsnes</p>
+    <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+</footer>
+</html>

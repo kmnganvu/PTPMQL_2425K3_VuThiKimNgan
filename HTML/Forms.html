@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>The name Attribute - Forms - Vu Thi Kim Ngan - 2221050402</h2>
+    <!--Phần tử HTML <form>được sử dụng để tạo biểu mẫu HTML để người dùng nhập dữ liệu:-->
+    <form action="/action_page.php">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" value="John"><br><br>
+        <!--Định <input type="text">nghĩa trường nhập liệu một dòng để nhập văn bản.-->
+        <input type="submit" value="Submit">
+        <!--<input type="submit">: một nút để gửi dữ liệu biểu mẫu tới trình xử lý biểu mẫu-->
+    </form> 
+
+    <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+    <p>Notice that the value of the "First name" field will not be submitted, because the input element does not have a name attribute.</p>
+    <h2>Checkboxes</h2>
+    <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+    <!--Checkbox: hộp kiểm cho phép người dụng chọn không hoặc nhiều tùy chọn-->
+    <form action="/action_page.php">
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+        <label for="vehicle3"> I have a boat</label><br><br>
+        <input type="submit" value="Submit">
+    </form> 
+    <!--Nút radio cho phép người dùng chọn 1 trong số các lựa chọn có hạn-->
+    <p>Choose your favorite Web language:</p>
+
+    <form>
+        <input type="radio" id="html" name="fav_language" value="HTML">
+        <label for="html">HTML</label><br>
+        <input type="radio" id="css" name="fav_language" value="CSS">
+        <label for="css">CSS</label><br>
+        <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+    </form>
+</body>
+</html>

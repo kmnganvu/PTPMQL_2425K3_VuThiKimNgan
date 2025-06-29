@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <!--Phần tử này <head>là nơi chứa siêu dữ liệu (dữ liệu về dữ liệu) và được đặt giữa <html>thẻ và <body>phần tử khác.
+
+Siêu dữ liệu HTML là dữ liệu về tài liệu HTML. Siêu dữ liệu không được hiển thị trên trang.
+
+Siêu dữ liệu thường xác định tiêu đề tài liệu, bộ ký tự, kiểu, tập lệnh và các thông tin siêu dữ liệu khác.-->
+<meta charset="UTF-8">
+<meta name="description" content="Free Web tutorials">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="John Doe">
+<!--Phần tử này <meta>thường được sử dụng để chỉ định bộ ký tự, mô tả trang, từ khóa, tác giả của tài liệu và cài đặt khung nhìn.
+
+Siêu dữ liệu sẽ không được hiển thị trên trang, nhưng được trình duyệt sử dụng (cách hiển thị nội dung hoặc tải lại trang), công cụ tìm kiếm (từ khóa) và các dịch vụ web khác.
+Xác định bộ ký tự được sử dụng:
+
+<meta charset="UTF-8">
+Xác định từ khóa cho công cụ tìm kiếm:
+
+<meta name="keywords" content="HTML, CSS, JavaScript">
+Xác định mô tả về trang web của bạn:
+
+<meta name="description" content="Free Web tutorials">
+Xác định tác giả của một trang:
+
+<meta name="author" content="John Doe">
+Làm mới tài liệu sau mỗi 30 giây:
+
+<meta http-equiv="refresh" content="30">
+Thiết lập chế độ xem để trang web của bạn trông đẹp trên mọi thiết bị:
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--Viewport là khu vực người dùng có thể nhìn thấy trên trang web. Nó thay đổi tùy theo thiết bị - nó sẽ nhỏ hơn trên điện thoại di động so với trên màn hình máy tính.
+
+Bạn nên đưa những <meta>thành phần sau vào tất cả các trang web của mình:
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+Phần này cung cấp cho trình duyệt hướng dẫn về cách kiểm soát kích thước và tỷ lệ của trang.
+
+Phần này width=device-widththiết lập chiều rộng của trang theo chiều rộng màn hình của thiết bị (có thể thay đổi tùy theo thiết bị).
+
+Phần này initial-scale=1.0thiết lập mức thu phóng ban đầu khi trình duyệt tải trang lần đầu tiên.-->
+<title>A Meaningful Page Title</title>
+  <!--Phần tử này <title>xác định tiêu đề của tài liệu. Tiêu đề phải chỉ là văn bản và được hiển thị trên thanh tiêu đề của trình duyệt hoặc trên tab của trang.
+
+Phần tử này <title>là bắt buộc trong tài liệu HTML!
+
+Nội dung của tiêu đề trang rất quan trọng đối với việc tối ưu hóa công cụ tìm kiếm (SEO)! Tiêu đề trang được các thuật toán của công cụ tìm kiếm sử dụng để quyết định thứ tự khi liệt kê các trang trong kết quả tìm kiếm.
+
+Nguyên <title>tố:
+
+định nghĩa một tiêu đề trong thanh công cụ của trình duyệt
+cung cấp tiêu đề cho trang khi nó được thêm vào mục yêu thích
+hiển thị tiêu đề cho trang trong kết quả của công cụ tìm kiếm
+Vì vậy, hãy cố gắng đặt tiêu đề chính xác và có ý nghĩa nhất có thể!-->
+<script>
+  function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+  }
+</script>
+<!--Phần tử này <script>được sử dụng để xác định JavaScripts phía máy khách.-->
+<base href="https://www.w3schools.com/" target="_blank">
+<!--Phần tử HTML <base>
+Phần tử này <base>chỉ định URL cơ sở và/hoặc mục tiêu cho tất cả các URL tương đối trong một trang.
+
+Thẻ <base>phải có thuộc tính href hoặc thuộc tính target hoặc cả hai.
+
+Chỉ có thể có một <base> phần tử duy nhất trong một tài liệu!-->
+<link rel="stylesheet" href="mystyle.css">
+<!--Phần tử này <link>xác định mối quan hệ giữa tài liệu hiện tại và một tài nguyên bên ngoài. Thẻ
+
+này <link> thường được sử dụng để liên kết đến các bảng định kiểu bên ngoài-->
+<style>
+    body {background-color: powderblue;}
+    h1 {color: red;}
+    p {color: blue;}
+  </style>
+</head>
+<body>
+<h1>Vu Thi Kim Ngan - 2221050402</h1>
+<p>The content of the body element is displayed in the browser window.</p>
+<p>The content of the title element is displayed in the browser tab, in favorites and in search-engine results.</p>
+<p>This is a paragraph.</p>
+  
+<p>The content of the body element is displayed in the browser window.</p>
+<p>The content of the title element is displayed in the browser tab, in favorites and in search-engine results.</p>
+
+<!--Phần <head>tử là một container chứa siêu dữ liệu (dữ liệu về dữ liệu)
+Phần <head>tử được đặt giữa <html>thẻ và <body>thẻ
+Phần tử này <title>là bắt buộc và nó xác định tiêu đề của tài liệu
+Phần tử này <style>được sử dụng để xác định thông tin kiểu cho một tài liệu duy nhất
+Thẻ này <link> thường được sử dụng để liên kết đến các bảng kiểu bên ngoài
+Phần tử này <meta>thường được sử dụng để chỉ định bộ ký tự, mô tả trang, từ khóa, tác giả của tài liệu và cài đặt khung nhìn
+Phần tử này <script>được sử dụng để xác định JavaScripts phía máy khách
+Phần tử này <base>chỉ định URL cơ sở và/hoặc mục tiêu cho tất cả các URL tương đối trong một trang-->
+</body>
+</html>
