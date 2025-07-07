@@ -1,6 +1,62 @@
-@{
-    ViewData["Title"]= "Index";
+@model IEnumerable<DemoMVC.Models.Employee>
+    <!--kiểu dữ liệu của Model là IEnumerable<Employee>-->
+    <!--kiểu dữ liệu này đại diện cho một tập hợp các đối tượng Employee-->
+    
+
+@{  
+    ViewData["Title"]= "Index Employee";
+    // Thiết lập tiêu đề của trang
 }
 
-<h2> Index Employee</h2>
-<p>Hello from view Template!</p>
+<h1>Index Employee</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonID">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
