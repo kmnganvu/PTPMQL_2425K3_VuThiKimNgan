@@ -87,6 +87,23 @@ namespace DemoMVC.Controllers
             }
             return View(employee);
         }
+        // Action Details (trả về View hiển thị thông tin chi tiết của 1 Employee trong CSDL)
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null || _context.Employee == null)
+            {
+                return NotFound();
+            }
+
+            var employee = await _context.Employee
+                .FirstOrDefaultAsync(m => m.PersonID == id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return View(employee);
+        }
         // Action Delete (trả về View thực hiện xóa thông tin 1 Employee trong CSDL)
         public async Task<IActionResult> Delete(string id)
         {

@@ -13,7 +13,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -55,6 +55,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.PersonID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PersonID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.PersonID">Delete</a>
             </td>
         </tr>

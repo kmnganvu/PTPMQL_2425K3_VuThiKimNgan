@@ -1,0 +1,30 @@
+@model DemoMVC.Models.HeThongPhanPhoi
+@{
+    ViewData["Title"] = "Details HeThongPhanPhoi";
+}
+<h1>Details HeThongPhanPhoi</h1>
+<div>
+    <h4>HeThongPhanPhoi</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaHTPP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaHTPP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TenHTPP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TenHTPP)
+        </dd>
+    </dl><br>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.MaHTPP">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

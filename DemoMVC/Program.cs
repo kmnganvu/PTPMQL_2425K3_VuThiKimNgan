@@ -1,12 +1,16 @@
 using DemoMVC.Data;
+using DemoMVC.Models;
 using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
+// Đăng ký DbContext với dịch vụ DI (Dependency Injection) để sử dụng Entity Framework Core.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
+// Đăng ký AutoGenerateCode để sử dụng trong các controller.
+builder.Services.AddTransient<AutoGenerateCode>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -21,6 +25,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();

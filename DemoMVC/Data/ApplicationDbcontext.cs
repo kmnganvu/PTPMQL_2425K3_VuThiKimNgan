@@ -9,9 +9,12 @@ namespace DemoMVC.Data
         { }
         // khai báo việc ánh xạ class Person vào trong database)
         public DbSet<Person> Person { get; set; }
-        
+
         // khai báo việc ánh xạ class Employee vào trong database)
         public DbSet<Employee> Employee { get; set; }
+
+        // khai báo việc ánh xạ class HeThongPhanPhoi vào trong database)
+        public DbSet<HeThongPhanPhoi> HeThongPhanPhois { get; set; }
         
     }
 }
