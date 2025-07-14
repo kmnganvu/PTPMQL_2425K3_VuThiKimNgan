@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DemoMVC.Data;
-using DemoMVC.Models;
+using DemoMVC.Models.Entities;
+using DemoMVC.Models.Process;
 
 namespace DemoMVC.Controllers
 {
@@ -9,17 +10,18 @@ namespace DemoMVC.Controllers
     {
         // Khai báo ApplicationDbContext để làm việc với CSDL:
         private readonly ApplicationDbContext _context; // ApplicationDbContext là lớp kết nối với CSDL
-        private readonly AutoGenerateCode _autoGenerateCode;// AutoGenerateCode là lớp dùng để tự động sinh mã cho các lớp khác trong dự án.
-        public PersonController(ApplicationDbContext context, AutoGenerateCode autoGenerateCode)
+        
+        public PersonController(ApplicationDbContext context)
         {
             _context = context; //_context dùng để truy vấn hoặc cập nhật dữ liệu
-            _autoGenerateCode = autoGenerateCode; // _autoGenerateCode dùng để tự động sinh mã cho các lớp khác trong dự án.
+           
         }
         // Action Index (trả về View 1 list dữ liệu Person trong CSDL): Truy vấn toàn bộ dữ liệu từ bảng Person theo kiểu bất đồng bộ (async/await).
         public async Task<IActionResult> Index()
         {
-            var model = await _context.Person.ToListAsync();
-            return View(model);
+            // Truy vấn toàn bộ dữ liệu từ bảng Persons theo kiểu bất đồng bộ (async/await).
+            // Sử dụng ToListAsync() để lấy danh sách Person từ CSDL.
+            return View(await _context.Persons.ToListAsync());
         }
         // Action Create (trả về View thực hiện thêm mới 1 Person vào CSDL)
         public IActionResult Create()
@@ -28,14 +30,18 @@ namespace DemoMVC.Controllers
             // Lấy PersonID cuối cùng trong CSDL để sinh mã mới.
             // Nếu không có Person nào trong CSDL, PersonID sẽ là "PS000".
             // Nếu có Person, lấy PersonID cuối cùng và sinh mã mới dựa trên nó
-            var lastPerson = _context.Person.OrderByDescending(p => p.PersonID).FirstOrDefault(); 
-            var lastId = lastPerson?.PersonID ?? "PS000"; // Nếu không có Person nào, sử dụng mã LastId mặc định "PS000" là mã khởi đầu
-            // Sử dụng AutoGenerateCode để sinh mã mới dựa trên mã cuối cùng.
-            var newId = _autoGenerateCode.GenerateCode(lastId);
-
-            ViewBag.NewPersonID = newId;// Lưu mã mới vào ViewBag để sử dụng trong View Create.
-
-            return View();//Trả về view hiển thị danh sách.
+            //1. Lay ra ban ghi moi nhat cua Person
+            var person = _context.Persons.OrderByDescending(p => p.PersonID).FirstOrDefault();
+            //2. Neu person == null thi gan PersonID = PS000
+            var personID = person == null ? "PS000" : person.PersonID;
+            //3. Goi toi phuong thuc sinh id tu dong
+            var autoGenerateId = new AutoGenerateCode();
+            var newPersonID = autoGenerateId.GenerateId(personID);
+            var newPerson = new Person
+            {
+                PersonID = newPersonID
+            };
+            return View(newPerson);
         }
         [HttpPost]// Action này sẽ được gọi khi người dùng gửi dữ liệu từ form Create
         [ValidateAntiForgeryToken] //đảm bảo tính bảo mật của hệ thống
@@ -43,7 +49,8 @@ namespace DemoMVC.Controllers
         {
             if (ModelState.IsValid)// Kiểm tra tính hợp lệ của dữ liệu nhập vào
             {
-                
+                // Nếu dữ liệu hợp lệ, thêm Person vào CSDL và lưu thay đổi
+                // _context là đối tượng DbContext dùng để tương tác với CSDL
                 _context.Add(person);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -53,12 +60,12 @@ namespace DemoMVC.Controllers
         // Action Edit (trả về View thực hiện sửa thông tin 1 Person trong CSDL)
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Person == null)
+            if (id == null || _context.Persons == null)
             {
                 return NotFound();
             }
 
-            var person = await _context.Person.FindAsync(id);
+            var person = await _context.Persons.FindAsync(id);
             if (person == null)
             {
                 return NotFound();
@@ -98,12 +105,12 @@ namespace DemoMVC.Controllers
         // Action Details (trả về View hiển thị thông tin chi tiết 1 Person trong CSDL)
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Person == null)
+            if (id == null || _context.Persons == null)
             {
                 return NotFound();
             }
 
-            var person = await _context.Person
+            var person = await _context.Persons
                 .FirstOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
@@ -116,12 +123,12 @@ namespace DemoMVC.Controllers
 
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Person == null)
+            if (id == null || _context.Persons == null)
             {
                 return NotFound();
             }
 
-            var person = await _context.Person
+            var person = await _context.Persons
                 .FirstOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
@@ -133,14 +140,14 @@ namespace DemoMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Person == null)
+            if (_context.Persons == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Person'  is null.");
             }
-            var person = await _context.Person.FindAsync(id);
+            var person = await _context.Persons.FindAsync(id);
             if (person != null)
             {
-                _context.Person.Remove(person);
+                _context.Persons.Remove(person);
             }
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -149,7 +156,7 @@ namespace DemoMVC.Controllers
         // Phương thức PersonExists (Kiểm tra xem 1 Person có tồn tài trong CSDL không):
         private bool PersonExists(string id)
         {
-            return (_context.Person?.Any(e => e.PersonID == id)).GetValueOrDefault();
+            return (_context.Persons?.Any(e => e.PersonID == id)).GetValueOrDefault();
         }
 
     }

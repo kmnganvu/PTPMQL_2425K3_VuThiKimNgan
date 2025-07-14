@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250707143313_Create_table_Employees")]
-    partial class Create_table_Employees
+    [Migration("20250714114504_Create_table_Persons")]
+    partial class Create_table_Persons
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,21 @@ namespace DemoMVC.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
 
-            modelBuilder.Entity("DemoMVC.Models.Person", b =>
+            modelBuilder.Entity("DemoMVC.Models.Entities.HeThongPhanPhoi", b =>
+                {
+                    b.Property<string>("MaHTPP")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TenHTPP")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaHTPP");
+
+                    b.ToTable("HeThongPhanPhois");
+                });
+
+            modelBuilder.Entity("DemoMVC.Models.Entities.Person", b =>
                 {
                     b.Property<string>("PersonID")
                         .HasColumnType("TEXT");
@@ -43,9 +57,9 @@ namespace DemoMVC.Migrations
                     b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("DemoMVC.Models.Employee", b =>
+            modelBuilder.Entity("DemoMVC.Models.Entities.Employee", b =>
                 {
-                    b.HasBaseType("DemoMVC.Models.Person");
+                    b.HasBaseType("DemoMVC.Models.Entities.Person");
 
                     b.Property<int>("Age")
                         .HasColumnType("INTEGER");
@@ -54,14 +68,14 @@ namespace DemoMVC.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("DemoMVC.Models.Employee", b =>
+            modelBuilder.Entity("DemoMVC.Models.Entities.Employee", b =>
                 {
-                    b.HasOne("DemoMVC.Models.Person", null)
+                    b.HasOne("DemoMVC.Models.Entities.Person", null)
                         .WithOne()
-                        .HasForeignKey("DemoMVC.Models.Employee", "PersonID")
+                        .HasForeignKey("DemoMVC.Models.Entities.Employee", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

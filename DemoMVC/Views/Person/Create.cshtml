@@ -1,4 +1,4 @@
-@model DemoMVC.Models.Person
+@model DemoMVC.Models.Entities.Person
 
 @{
     ViewData["Title"] = "Create";
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PersonID" class="control-label"></label>
-                <input asp-for="PersonID" class="form-control" value="@ViewBag.NewPersonID" readonly />
+                <input asp-for="PersonID" class="form-control" readonly />
                 <span asp-validation-for="PersonID" class="text-danger"></span>
             </div>
             <div class="form-group">

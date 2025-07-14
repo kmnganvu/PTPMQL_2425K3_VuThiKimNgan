@@ -1,5 +1,5 @@
 using DemoMVC.Data;
-using DemoMVC.Models;
+using DemoMVC.Models.Process;
 using Microsoft.EntityFrameworkCore;
 
 

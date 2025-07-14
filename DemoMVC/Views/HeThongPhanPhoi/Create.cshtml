@@ -1,8 +1,9 @@
-@model DemoMVC.Models.HeThongPhanPhoi
+@model DemoMVC.Models.Entities.HeThongPhanPhoi
 
 @{
     ViewData["Title"] = "Create";
 }
+
 <h1>Create</h1>
 
 <h4>HeThongPhanPhoi</h4>
@@ -27,9 +28,11 @@
         </form>
     </div>
 </div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
