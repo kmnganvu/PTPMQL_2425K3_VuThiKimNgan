@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using DemoMVC.Models.Entities;
 using DemoMVC.Models.Entities.DaiLy;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DemoMVC.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+
     {
         internal object DaiLy;
 
@@ -20,6 +22,15 @@ namespace DemoMVC.Data
         public DbSet<HeThongPhanPhoi> HeThongPhanPhois { get; set; }
         // khai báo việc ánh xạ class DaiLy vào trong database)
         public DbSet<DaiLy> DaiLies { get; set; }
+        // protected override void OnModelCreating(ModelBuilder builder)
+        // {
+        //     base.OnModelCreating(builder);
+        //     // Đặt tên bảng cho các thực thể
+        //     builder.Entity<Person>().ToTable("Persons");
+        //     builder.Entity<Employee>().ToTable("Employees");
+        //     builder.Entity<HeThongPhanPhoi>().ToTable("HeThongPhanPhois");
+        //     builder.Entity<DaiLy>().ToTable("DaiLies");
+        // }
         
     }
 }

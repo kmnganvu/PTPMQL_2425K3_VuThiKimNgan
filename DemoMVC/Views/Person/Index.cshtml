@@ -1,4 +1,7 @@
-@model IEnumerable<DemoMVC.Models.Entities.Person>
+@model IPagedList<DemoMVC.Models.Entities.Person>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+
 
 @{
     ViewData["Title"]= "Index";
@@ -7,13 +10,14 @@
 <h1> Index Person</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>    
+    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Download">Download</a>    
 </p>
 
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.PersonID)
             </th>
             <th>
@@ -24,7 +28,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Phone)
-            </th>
+            </th> *@
+            <th>@Html.DisplayNameFor(m => m[0].PersonID)</th>
+            <th>@Html.DisplayNameFor(m => m[0].FullName)</th>
+            <th>@Html.DisplayNameFor(m => m[0].Address)</th>
+            <th>@Html.DisplayNameFor(m => m[0].Phone)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -51,3 +60,32 @@
 }
     </tbody>
 </table>
+<!-- Phân trang -->
+@using (Html.BeginForm("Index", "Person", FormMethod.Get, new {id = "form1"}))
+{
+    <div class="row">
+        <div class="col-md-11">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, pageSize = ViewBag.psize }),
+            new X.PagedList.Mvc.Core.PagedListRenderOptions
+            {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+            })     
+        </div>
+        <div class="col-md-1">
+            @Html.DropDownList("pageSize",null,new { @class="form-select" })
+        </div>
+    </div>
+}
+@* Thêm script để xử lý sự kiện thay đổi kích thước trang *@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#pageSize').change(function() {
+                $('#form1').submit(); 
+        });
+    });
+    
+
+</script>
+

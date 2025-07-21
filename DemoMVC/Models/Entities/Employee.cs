@@ -12,7 +12,10 @@ namespace DemoMVC.Models.Entities;
 
 public class Employee : Person
 {
+    [Display (Name = "Mã nhân viên")]
     [Required(ErrorMessage = "EmployeeId is required.")]
     public string EmployeeId { get; set; } = default!;
+    [Display(Name = "Tuổi")]
+    [Range(18, 50, ErrorMessage = "Age must be between 18 and 65.")]
     public int Age { get; set; }
 }
