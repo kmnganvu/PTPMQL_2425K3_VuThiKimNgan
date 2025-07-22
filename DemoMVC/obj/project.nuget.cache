@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "wAc/90FCfdw=",
+  "dgSpecHash": "CPrdbTitiQ0=",
   "success": true,
   "projectFilePath": "D:\\App code\\htdocs\\VuThiKimNgan\\DemoMVC\\DemoMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\bogus\\35.6.3\\bogus.35.6.3.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\epplus\\5.8.3\\epplus.5.8.3.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
@@ -61,6 +62,7 @@
     "C:\\Users\\admin\\.nuget\\packages\\mailkit\\4.13.0\\mailkit.4.13.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.7\\microsoft.aspnetcore.cryptography.internal.9.0.7.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.7\\microsoft.aspnetcore.cryptography.keyderivation.9.0.7.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\9.0.7\\microsoft.aspnetcore.diagnostics.entityframeworkcore.9.0.7.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\9.0.7\\microsoft.aspnetcore.identity.entityframeworkcore.9.0.7.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\9.0.7\\microsoft.aspnetcore.identity.ui.9.0.7.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
@@ -248,18 +250,5 @@
     "C:\\Users\\admin\\.nuget\\packages\\x.pagedlist\\9.1.2\\x.pagedlist.9.1.2.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\x.pagedlist.mvc.core\\9.1.2\\x.pagedlist.mvc.core.9.1.2.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "message": "DemoMVC depends on X.PagedList.Mvc.Core (>= 9.0.0) but X.PagedList.Mvc.Core 9.0.0 was not found. X.PagedList.Mvc.Core 9.1.2 was resolved instead.",
-      "projectPath": "D:\\App code\\htdocs\\VuThiKimNgan\\DemoMVC\\DemoMVC.csproj",
-      "warningLevel": 1,
-      "filePath": "D:\\App code\\htdocs\\VuThiKimNgan\\DemoMVC\\DemoMVC.csproj",
-      "libraryId": "X.PagedList.Mvc.Core",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  "logs": []
 }

@@ -1,0 +1,20 @@
+@model IEnumerable<DemoMVC.Models.Entities.ApplicationUser>
+@{
+    ViewData["Title"] = "User List";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+            </tr>
+        }
+</table>

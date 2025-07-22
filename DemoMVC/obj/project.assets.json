@@ -47,6 +47,19 @@
           }
         }
       },
+      "Bogus/35.6.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Bogus.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Bogus.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "BouncyCastle.Cryptography/2.5.1": {
         "type": "package",
         "compile": {
@@ -727,6 +740,25 @@
             "related": ".xml"
           }
         }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/9.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "9.0.7"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/9.0.7": {
         "type": "package",
@@ -4423,6 +4455,27 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
+    "Bogus/35.6.3": {
+      "sha512": "+5omfZWy8gOcbpc48vKfMI4h/ecbdf3NQm6xCl3zMbaP4J3rMMm5h3kPFeIWBgt4mbz6YY0eeZDLR/6yv1khKw==",
+      "type": "package",
+      "path": "bogus/35.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "bogus.128.png",
+        "bogus.35.6.3.nupkg.sha512",
+        "bogus.nuspec",
+        "lib/net40/Bogus.dll",
+        "lib/net40/Bogus.xml",
+        "lib/net6.0/Bogus.dll",
+        "lib/net6.0/Bogus.xml",
+        "lib/netstandard1.3/Bogus.dll",
+        "lib/netstandard1.3/Bogus.xml",
+        "lib/netstandard2.0/Bogus.dll",
+        "lib/netstandard2.0/Bogus.xml"
+      ]
+    },
     "BouncyCastle.Cryptography/2.5.1": {
       "sha512": "zy8TMeTP+1FH2NrLaNZtdRbBdq7u5MI+NFZQOBSM69u5RFkciinwzV2eveY6Kjf5MzgsYvvl6kTStsj3JrXqkg==",
       "type": "package",
@@ -5291,6 +5344,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
         "microsoft.aspnetcore.cryptography.keyderivation.9.0.7.nupkg.sha512",
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/9.0.7": {
+      "sha512": "ONwNMSCiOk3zmQUCtYan4xufMOFhpYTQ1IRj9WmdYly6SZqNSjVPZiaujXn6ajKnHtA5XpgDsLUYrnCSiFewNw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/9.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net9.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll",
+        "lib/net9.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.9.0.7.nupkg.sha512",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/9.0.7": {
@@ -12581,8 +12649,10 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "Bogus >= 35.6.3",
       "EPPlus >= 5.8.3",
       "MailKit >= 4.13.0",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 9.0.7",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 9.0.7",
       "Microsoft.AspNetCore.Identity.UI >= 9.0.7",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.7",
@@ -12590,7 +12660,7 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.6",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 9.0.0",
-      "X.PagedList.Mvc.Core >= 9.0.0"
+      "X.PagedList.Mvc.Core >= 9.1.2"
     ]
   },
   "packageFolders": {
@@ -12636,6 +12706,10 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "Bogus": {
+            "target": "Package",
+            "version": "[35.6.3, )"
+          },
           "EPPlus": {
             "target": "Package",
             "version": "[5.8.3, )"
@@ -12643,6 +12717,10 @@
           "MailKit": {
             "target": "Package",
             "version": "[4.13.0, )"
+          },
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[9.0.7, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -12678,7 +12756,7 @@
           },
           "X.PagedList.Mvc.Core": {
             "target": "Package",
-            "version": "[9.0.0, )"
+            "version": "[9.1.2, )"
           }
         },
         "imports": [
@@ -12703,17 +12781,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "DemoMVC depends on X.PagedList.Mvc.Core (>= 9.0.0) but X.PagedList.Mvc.Core 9.0.0 was not found. X.PagedList.Mvc.Core 9.1.2 was resolved instead.",
-      "libraryId": "X.PagedList.Mvc.Core",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  }
 }

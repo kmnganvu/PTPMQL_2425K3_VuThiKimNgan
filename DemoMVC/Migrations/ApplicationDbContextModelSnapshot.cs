@@ -82,7 +82,7 @@ namespace DemoMVC.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("DemoMVC.Models.Entities.DaiLy.DaiLy", b =>
@@ -118,6 +118,43 @@ namespace DemoMVC.Migrations
                     b.ToTable("DaiLies");
                 });
 
+            modelBuilder.Entity("DemoMVC.Models.Entities.Employee", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("HireDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("EmployeeId");
+
+                    b.ToTable("Employees");
+                });
+
             modelBuilder.Entity("DemoMVC.Models.Entities.HeThongPhanPhoi", b =>
                 {
                     b.Property<string>("MaHTPP")
@@ -130,6 +167,33 @@ namespace DemoMVC.Migrations
                     b.HasKey("MaHTPP");
 
                     b.ToTable("HeThongPhanPhois");
+                });
+
+            modelBuilder.Entity("DemoMVC.Models.Entities.MemberUnit", b =>
+                {
+                    b.Property<int>("MemberUnitId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("WebsiteUrl")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MemberUnitId");
+
+                    b.ToTable("MemberUnits");
                 });
 
             modelBuilder.Entity("DemoMVC.Models.Entities.Person", b =>
@@ -153,8 +217,6 @@ namespace DemoMVC.Migrations
                     b.HasKey("PersonID");
 
                     b.ToTable("Persons");
-
-                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -289,20 +351,6 @@ namespace DemoMVC.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("DemoMVC.Models.Entities.Employee", b =>
-                {
-                    b.HasBaseType("DemoMVC.Models.Entities.Person");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.ToTable("Employees");
-                });
-
             modelBuilder.Entity("DemoMVC.Models.Entities.DaiLy.DaiLy", b =>
                 {
                     b.HasOne("DemoMVC.Models.Entities.HeThongPhanPhoi", "HeThongPhanPhoi")
@@ -361,15 +409,6 @@ namespace DemoMVC.Migrations
                     b.HasOne("DemoMVC.Models.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DemoMVC.Models.Entities.Employee", b =>
-                {
-                    b.HasOne("DemoMVC.Models.Entities.Person", null)
-                        .WithOne()
-                        .HasForeignKey("DemoMVC.Models.Entities.Employee", "PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

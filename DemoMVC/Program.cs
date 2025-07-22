@@ -3,87 +3,103 @@ using DemoMVC.Models.Process;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
-// Đăng ký DbContext với dịch vụ DI (Dependency Injection) để sử dụng Entity Framework Core.
+
+// Cấu hình mail
+builder.Services.AddOptions();
+var mailSettings = builder.Configuration.GetSection("MailSettings");
+builder.Services.Configure<MailSettings>(mailSettings);
+builder.Services.AddTransient<IEmailSender, SendMailService>();
+
+// Đăng ký DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
+// Đăng ký RoleManager
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddRazorPages();
 
-builder.Services.AddDefaultIdentity<DemoMVC.Models.Entities.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
-
-// Đăng ký AutoGenerateCode để sử dụng trong các controller.
-builder.Services.AddTransient<AutoGenerateCode>();
-// Add services to the container.
+// Đăng ký Identity
+builder.Services.AddIdentity<DemoMVC.Models.Entities.ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-// Đăng ký Identity để sử dụng xác thực người dùng.
+// Đăng ký Seeder
+builder.Services.AddTransient<EmployeeSeeder>();
+builder.Services.AddTransient<AutoGenerateCode>();
+
+builder.Services.AddControllersWithViews();
+
+// Cấu hình Identity Options
 builder.Services.Configure<IdentityOptions>(options =>
 {
-    // Password settings
     options.Password.RequireDigit = true;
     options.Password.RequiredLength = 8;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = true;
     options.Password.RequireLowercase = false;
 
-    // Lockout settings
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
     options.Lockout.MaxFailedAccessAttempts = 5;
     options.Lockout.AllowedForNewUsers = true;
 
-    //Config Login
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;
-
-    // User settings
     options.User.RequireUniqueEmail = true;
 });
 
+// Cấu hình Cookie
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    // Cookie settings
     options.Cookie.HttpOnly = true;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Chỉ sử dụng cookie qua HTTPS
-    options.Cookie.SameSite = SameSiteMode.Lax; // Cài đặt SameSite giảm thiểu rủi ro CSRF
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.Lax;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-    options.LoginPath = "/Indentity/Account/Login";
-    options.AccessDeniedPath = "/Indentity/Account/AccessDenied";
+    options.LoginPath = "/Identity/Account/Login"; // Sửa lại "Indentity" -> "Identity"
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
 });
-// Cấu hình bảo vệ dữ liệu bằng cách sử dụng Data Protection API.
+
+// Bảo vệ dữ liệu
 builder.Services.AddDataProtection()
-// Chỉ định nơi lưu trữ khóa bảo vệ dữ liệu.
     .PersistKeysToFileSystem(new DirectoryInfo(@"./keys"))
-    // Xác định tên ứng dụng để bảo vệ dữ liệu.
     .SetApplicationName("DemoMVC")
-    // Chỉ định thời gian sống của khóa bảo vệ dữ liệu.
     .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
 
+// Build app đúng chuẩn (chỉ build một lần duy nhất)
 var app = builder.Build();
+//Seed data sau khi app đã build (tránh build lần 2)
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var seeder = services.GetRequiredService<EmployeeSeeder>();
+    seeder.SeedEmployees(1000);
+}
 
-// Configure the HTTP request pipeline.
+// Middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthentication(); 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
+// app.MapStaticAssets();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-app.MapRazorPages(); // Để Razor Pages (bao gồm Identity UI) hoạt động
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
+// .WithStaticAssets();
 
+app.MapRazorPages();
 
 app.Run();
